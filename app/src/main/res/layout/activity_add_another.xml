@@ -1,52 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_weight="100">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:layout_height="39dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
             android:text="Item Name: "
-            android:textSize="32dp"
-            android:layout_marginLeft="50dp"
-            />
+            android:textSize="25dp"
+            android:layout_weight="10"/>
 
         <EditText
+            android:id="@+id/itemNameEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
             android:textSize="25dp"
-            android:id="@+id/itemNameEdit"
-            />
+            android:layout_weight="90"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:layout_height="41dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="32dp"
-            android:layout_marginLeft="50dp"
-            android:text="Amount: "/>
+            android:layout_marginLeft="25dp"
+            android:layout_weight="10"
+            android:text="Amount: "
+            android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/itemAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="50"
             android:text=""
-            android:textSize="25dp"
-            android:id="@+id/itemAmtEdit"/>
+            android:textSize="25dp" />
     </LinearLayout>
-    <Button
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="41dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_weight="10"
+            android:text="Assignee: "
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/assignee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="90"
+            android:text=""
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/saveItem"
+        android:layout_width="136dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="10dp"
         android:text="Save Item"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginLeft="250dp"/>
 
 </LinearLayout>
