@@ -71,4 +71,7 @@ public class MyList extends AppCompatActivity {
         return myItems;
     }
 
+    public void setList(ArrayList<Item> list){
+        myItems = list;
+    }
 }

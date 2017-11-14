@@ -14,31 +14,46 @@ import java.util.ArrayList;
  */
 
 public class AddAnother extends AppCompatActivity{
-    Button saveButton;
-    EditText newItemName, newAmount, newAssignee;
-    ArrayList<Item> myList;
+    EditText newItemName, newAmount, newAssignee, newCategory;
+    MyList myList;
+    ArrayList<Item> newList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_another);
-        saveButton = (Button) findViewById(R.id.saveItem);
+        onClickListenerButton();
+        // Getting all user input fields
+
         newItemName = (EditText) findViewById(R.id.itemNameEdit);
         newAmount = (EditText) findViewById(R.id.itemAmount);
         newAssignee = (EditText) findViewById(R.id.assignee);
-        //myList = MyList.getList();
+        newCategory = (EditText) findViewById(R.id.category);
+        // Getting list from the MyList class and setting it to "newList" so we can add
+        // more items to the list
+        myList = new MyList();
+        newList = new ArrayList<Item>();
+        newList = myList.getList();
     }
 
-    public void onClick(View v){
-        /*TO-DO:
-        if "save item" is clicked, store all given info as an "Item" object
-         */
-        if(v==saveButton){
-            addNewItem();
-        }
-        return;
+    public void onClickListenerButton(){
+        Button saveButton = (Button) findViewById(R.id.saveItem);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    addNewItem();
+                    //System.out.println("Save item clicked");
+                    startActivity(new Intent(AddAnother.this, MyList.class));
+            }
+        });
     }
+
     public void addNewItem(){
-        // STORE NEW INFO ABOUT ITEM
+        String newItemNameString = newItemName.getText().toString();
+        String newAmountString = newAmount.getText().toString();
+        String newCategoryString = newCategory.getText().toString();
+        String newAssigneeString = newAssignee.getText().toString();
+        myList.addItem(newItemNameString, newAmountString, newCategoryString, newAssigneeString);
         return;
     }
     /*
