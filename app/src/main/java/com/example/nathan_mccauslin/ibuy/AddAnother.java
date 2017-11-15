@@ -16,7 +16,11 @@ import java.util.ArrayList;
 public class AddAnother extends AppCompatActivity{
     EditText newItemName, newAmount, newAssignee, newCategory;
     MyList myList;
-    ArrayList<Item> newList;
+    String newItemNameString;
+    String items;
+    String newAmountString;
+    String newCategoryString;
+    String newAssigneeString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +33,16 @@ public class AddAnother extends AppCompatActivity{
         newAmount = (EditText) findViewById(R.id.itemAmount);
         newAssignee = (EditText) findViewById(R.id.assignee);
         newCategory = (EditText) findViewById(R.id.category);
+        Intent i = getIntent();
+        items = i.getStringExtra("grocheryList");
+        System.out.println("items: " + items);
+
+        if(items == null){
+            items = "";
+        }
         // Getting list from the MyList class and setting it to "newList" so we can add
         // more items to the list
         myList = new MyList();
-        newList = new ArrayList<Item>();
-        newList = myList.getList();
     }
 
     public void onClickListenerButton(){
@@ -41,20 +50,19 @@ public class AddAnother extends AppCompatActivity{
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    addNewItem();
-                    //System.out.println("Save item clicked");
-                    startActivity(new Intent(AddAnother.this, MyList.class));
+                    newItemNameString = newItemName.getText().toString() + ",";
+                    newAmountString = newAmount.getText().toString() + ",";
+                    newCategoryString = newCategory.getText().toString() + ",";
+                    newAssigneeString = newAssignee.getText().toString() + '\n';
+                    String itemFull = newItemNameString + newAmountString+newCategoryString+newAssigneeString;
+                    if(!items.equals("")){items += '\n';}
+                    items += itemFull;
+                    //System.out.println("items: " + items);
+                    Intent intents = new Intent(AddAnother.this, MyList.class);
+                    intents.putExtra("grocheryList", items);
+                    startActivity(intents);
             }
         });
-    }
-
-    public void addNewItem(){
-        String newItemNameString = newItemName.getText().toString();
-        String newAmountString = newAmount.getText().toString();
-        String newCategoryString = newCategory.getText().toString();
-        String newAssigneeString = newAssignee.getText().toString();
-        myList.addItem(newItemNameString, newAmountString, newCategoryString, newAssigneeString);
-        return;
     }
     /*
     TO-DO:

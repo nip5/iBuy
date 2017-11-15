@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -15,63 +18,62 @@ import java.util.ArrayList;
 
 public class MyList extends AppCompatActivity {
     /*RESOURCE - https://www.youtube.com/watch?v=E6vE8fqQPTE */
-    ArrayList<Item> myItems;
+    ArrayList<String> myItems;
+    TextView listItem;
+    String listItems;
+    Intent intent;
+    Intent addAnother;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mylist);
+        listItem  = (TextView) findViewById(R.id.itemList);
         onClickListenerButton();
-        ListView myList = (ListView) findViewById(R.id.itemList);
-        myItems = new ArrayList<>();
-
-        /*
-        *
-        TESTING LIST OUT  W/O USER INPUT
-        *
-        */
-        addItem("milk", "2", "groceries", "Sam");
-        addItem("bread", "2", "groceries", "Sam");
-        addItem("milk", "2", "groceries", "Sam");
-        addItem("bread", "2", "groceries", "Sam");
-        addItem("milk", "2", "groceries", "Sam");
-        addItem("bread", "2", "groceries", "Sam");
-        addItem("milk", "2", "groceries", "Sam");
-        addItem("bread", "2", "groceries", "Sam");
-        addItem("milk", "2", "groceries", "Sam");
-        addItem("bread", "2", "groceries", "Sam");
-        addItem("milk", "2", "groceries", "Sam");
-        addItem("bread", "2", "groceries", "Sam");
-        addItem("milk", "2", "groceries", "Sam");
-        addItem("bread", "2", "groceries", "Sam");
-
-        /*
-        *
-        END TEST
-        *
-        */
-
-        ItemListAdapter adapter = new ItemListAdapter(this, R.layout.list_layout, myItems);
-        myList.setAdapter(adapter); // displaying all items from myList onto screen
+        Intent i = getIntent();
+        listItems = i.getStringExtra("grocheryList");
+        if(listItems == null){
+            listItems = "";
+        }
+        addAnother = new Intent(this, AddAnother.class);
+        intent = new Intent(this, MyList.class);
+        intent.putExtra("grocheryList", listItems);
+        addAnother.putExtra("grocheryList", listItems);
+        listItems = modString(listItems);
+        System.out.println("listItems: " + listItems);
+        listItem.setText(listItems);
     }
     public void onClickListenerButton(){
-        Button addAnotherBtn = (Button) findViewById(R.id.addAnotherButton);
+        final Button addAnotherBtn = (Button) findViewById(R.id.addAnotherButton);
+        Button resetBtn = (Button) findViewById(R.id.deleteListButton);
         addAnotherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Start NewActivity.class
-                startActivity(new Intent(MyList.this, AddAnother.class));
+                startActivity(addAnother);
+
+            }
+        });
+        resetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start NewActivity.class
+                listItems = "";
+                Intent intent = new Intent(MyList.this, MyList.class);
+                intent.putExtra("grocheryList", listItems);
+                startActivity(intent);
+                //startActivity(new Intent(HomeActivity.this, MyList.class));
             }
         });
     }
-    public void addItem(String item, String num, String category, String assigned){
-        Item newItem = new Item(item, num, category, assigned);
-        myItems.add(newItem);
+    public String modString(String itemAmtCatAssign){
+        itemAmtCatAssign = itemAmtCatAssign.replaceAll(",", "               ") + '\n';
+        return itemAmtCatAssign;
     }
-    public ArrayList<Item> getList(){
+    public ArrayList<String> getList(){
         return myItems;
     }
 
-    public void setList(ArrayList<Item> list){
+    public void setList(ArrayList<String> list){
         myItems = list;
     }
 }
