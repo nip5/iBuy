@@ -21,7 +21,9 @@ public class MyList extends AppCompatActivity {
     ArrayList<String> myItems;
     TextView listItem;
     String listItems;
+    String menuString;
     Intent intent;
+    Intent menu;
     Intent addAnother;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,10 @@ public class MyList extends AppCompatActivity {
         listItem  = (TextView) findViewById(R.id.itemList);
         onClickListenerButton();
         Intent i = getIntent();
+        menu = new Intent(this, HomeActivity.class);
         listItems = i.getStringExtra("grocheryList");
+        menuString = i.getStringExtra("grocheryList");
+        menu.putExtra("grocheryList", listItems);
         if(listItems == null){
             listItems = "";
         }
@@ -44,12 +49,21 @@ public class MyList extends AppCompatActivity {
     }
     public void onClickListenerButton(){
         final Button addAnotherBtn = (Button) findViewById(R.id.addAnotherButton);
+        Button menuBtn = (Button) findViewById(R.id.backMenuButton);
         Button resetBtn = (Button) findViewById(R.id.deleteListButton);
         addAnotherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Start NewActivity.class
                 startActivity(addAnother);
+
+            }
+        });
+        menuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start NewActivity.class
+                startActivity(menu);
 
             }
         });

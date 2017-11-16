@@ -7,12 +7,17 @@ import android.view.View;
 import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
-
+    String listItems;
+    Intent analysis;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         onClickListenerButton();
+        Intent i = new Intent();
+        listItems = i.getStringExtra("grocheryList");
+        analysis = new Intent(this, PurchaseAnalytics.class);
+        analysis.putExtra("grocheryList", listItems);
     }
     public void onClickListenerButton(){
         Button myListBtn = (Button) findViewById(R.id.myListButton);
@@ -28,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start NewActivity.class
-                startActivity(new Intent(HomeActivity.this, PurchaseAnalytics.class));
+                startActivity(analysis);
             }
         });
     }
