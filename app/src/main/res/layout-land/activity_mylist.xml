@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:weightSum="100">
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="My List"
+            android:textColor="@color/colorText"
             android:textAlignment="center"
             android:textSize="13pt"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -138,7 +140,8 @@
             app:layout_constraintVertical_bias="1.0"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.089" />
+            app:layout_constraintHorizontal_bias="0.089"
+            android:backgroundTint="@color/colorAccent"/>
 
         <Button
             android:id="@+id/deleteListButton"
@@ -155,7 +158,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             tools:layout_editor_absoluteY="144dp"
-            app:layout_constraintHorizontal_bias="0.501" />
+            app:layout_constraintHorizontal_bias="0.501"
+            android:backgroundTint="@color/colorAccent"/>
 
         <Button
             android:id="@+id/addAnotherButton"
@@ -171,7 +175,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            android:backgroundTint="@color/colorAccent"/>
 
 
     </android.support.constraint.ConstraintLayout>

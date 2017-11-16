@@ -21,7 +21,6 @@ public class MyList extends AppCompatActivity {
     ArrayList<String> myItems;
     TextView listItem;
     String listItems;
-    String menuString;
     Intent intent;
     Intent menu;
     Intent addAnother;
@@ -32,19 +31,20 @@ public class MyList extends AppCompatActivity {
         listItem  = (TextView) findViewById(R.id.itemList);
         onClickListenerButton();
         Intent i = getIntent();
-        menu = new Intent(this, HomeActivity.class);
+
         listItems = i.getStringExtra("grocheryList");
-        menuString = i.getStringExtra("grocheryList");
-        menu.putExtra("grocheryList", listItems);
+        System.out.println("menuString in MyList: " + listItems);
         if(listItems == null){
             listItems = "";
         }
+
+        menu = new Intent(this, HomeActivity.class);
         addAnother = new Intent(this, AddAnother.class);
         intent = new Intent(this, MyList.class);
         intent.putExtra("grocheryList", listItems);
         addAnother.putExtra("grocheryList", listItems);
+        menu.putExtra("grocheryList", listItems);
         listItems = modString(listItems);
-        System.out.println("listItems: " + listItems);
         listItem.setText(listItems);
     }
     public void onClickListenerButton(){
@@ -80,7 +80,7 @@ public class MyList extends AppCompatActivity {
         });
     }
     public String modString(String itemAmtCatAssign){
-        itemAmtCatAssign = itemAmtCatAssign.replaceAll(",", "               ") + '\n';
+        itemAmtCatAssign = itemAmtCatAssign.replaceAll(",", "                  ") + '\n';
         return itemAmtCatAssign;
     }
     public ArrayList<String> getList(){

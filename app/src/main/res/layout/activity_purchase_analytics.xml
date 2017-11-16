@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Unique Items Assigned By User"
+        android:textColor="@color/colorText"
+        android:textSize="28dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text=""
-        android:id="@+id/userAndQuantity"/>
+        android:id="@+id/userAndQuantity1"
+        android:textSize="22dp"
+        android:layout_marginLeft="125dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/userAndQuantity2"
+        android:textSize="22dp"
+        android:layout_marginLeft="125dp"/>
 </LinearLayout>

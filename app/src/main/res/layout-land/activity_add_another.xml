@@ -3,6 +3,7 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="100"
+    android:background="@color/colorPrimary"
     android:weightSum="100">
 
     <LinearLayout
@@ -123,7 +124,8 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="Save Item" />
+            android:text="Save Item"
+            android:backgroundTint="@color/colorAccent"/>
     </LinearLayout>
 
         <LinearLayout
@@ -161,7 +163,8 @@
                     android:id="@+id/saveItem1"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="+" />
+                    android:text="+"
+                    android:backgroundTint="@color/colorAccent"/>
             </LinearLayout>
 
             <LinearLayout
@@ -182,7 +185,8 @@
                     android:id="@+id/saveItem2"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="+" />
+                    android:text="+"
+                    android:backgroundTint="@color/colorAccent"/>
             </LinearLayout>
 
             <LinearLayout
@@ -203,7 +207,8 @@
                     android:id="@+id/saveItem3"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="+" />
+                    android:text="+"
+                    android:backgroundTint="@color/colorAccent"/>
             </LinearLayout>
 
             <LinearLayout
@@ -224,7 +229,8 @@
                     android:id="@+id/saveItem4"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="+" />
+                    android:text="+"
+                    android:backgroundTint="@color/colorAccent"/>
             </LinearLayout>
 
             <LinearLayout
@@ -245,7 +251,8 @@
                     android:id="@+id/saveItem5"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="+" />
+                    android:text="+"
+                    android:backgroundTint="@color/colorAccent"/>
             </LinearLayout>
         </LinearLayout>
 

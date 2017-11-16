@@ -14,10 +14,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         onClickListenerButton();
-        Intent i = new Intent();
+        Intent i = getIntent();
         listItems = i.getStringExtra("grocheryList");
         analysis = new Intent(this, PurchaseAnalytics.class);
         analysis.putExtra("grocheryList", listItems);
+        System.out.println("listItems in main: " + listItems);
     }
     public void onClickListenerButton(){
         Button myListBtn = (Button) findViewById(R.id.myListButton);

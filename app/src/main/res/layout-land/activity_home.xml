@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.nathan_mccauslin.ibuy.HomeActivity"
+    android:background="@color/colorPrimary"
     android:weightSum="100">
 
     <TextView
@@ -15,6 +16,7 @@
         android:layout_marginTop="10dp"
         android:textAlignment="center"
         android:text="iBuy Homepage"
+        android:textColor="@color/colorText"
         android:textSize="32dp" />
 
     <Button
@@ -24,7 +26,8 @@
         android:layout_marginLeft="180dp"
         android:layout_marginTop="40dp"
         android:id="@+id/myListButton"
-        android:layout_weight="13.87" />
+        android:layout_weight="13.87"
+        android:backgroundTint="@color/colorAccent"/>
 
     <Button
         android:id="@+id/purchaseAnalyticsButton"
@@ -33,6 +36,7 @@
         android:layout_marginLeft="180dp"
         android:layout_marginTop="30dp"
         android:layout_weight="1.81"
-        android:text="Purchase Analytics" />
+        android:text="Purchase Analytics"
+        android:backgroundTint="@color/colorAccent"/>
 
 </LinearLayout>
